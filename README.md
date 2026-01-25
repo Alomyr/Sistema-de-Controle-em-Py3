@@ -1,6 +1,9 @@
 # Sistema-de-Controle-em-Py3
+
 projeto basico/introdutorio para aplicar os conhecimentos inicias --> avancandos em python 3
+
 # 📌 Projeto 1 — Sistema de Controle Pessoal (CLI + Banco de Dados)
+
 ## 🔹 Objetivo do Projeto
 
 O projeto tem como objetivo criar um sistema de controle de tarefas simples, usando Python e SQLite, para praticar:
