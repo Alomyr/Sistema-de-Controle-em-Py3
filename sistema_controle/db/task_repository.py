@@ -1,8 +1,12 @@
 from sistema_controle.db.connectiondb import connection
 from sistema_controle.src.model.task import Task
+from sistema_controle.db.tabela_Task import create_table
 
 
 def add_task(task: Task):
+
+    create_table()
+
     connectionTask = connection()
     cursor = connectionTask.cursor()
 
