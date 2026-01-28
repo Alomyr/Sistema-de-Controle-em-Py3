@@ -1,5 +1,5 @@
 from datetime import datetime
-from sistema_controle.db.task_repository import add_task, task_list
+from sistema_controle.db.task_repository import add_task, task_list, task_delet
 from sistema_controle.src.model.task import Task
 
 
@@ -30,4 +30,7 @@ def task_list_view():
         print(f"{erros}")
 
 
-# def task_delet():
+def task_delet_view():
+    task_list_view()
+    id_delet = int(input("Digite o id da tarefa para deletar: "))
+    task_delet(id_delet)
