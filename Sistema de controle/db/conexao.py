@@ -15,6 +15,14 @@ try:
     cursor.execute("SELECT version();")
     print(cursor.fetchone())
 
+    # cursor.execute("INSERT INTO pessoas (nome, idade) VALUES (%s, %s)", ("Matheus", 21))
+    # conexao.commit()
+
+    cursor.execute("SELECT * FROM pessoas")
+
+    for linha in cursor.fetchall():
+        print(linha)
+
 except Exception as erro:
     print("❌ Erro:", erro)
 
