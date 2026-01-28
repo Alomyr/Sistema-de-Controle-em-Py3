@@ -2,10 +2,8 @@ from datetime import datetime
 
 
 class Task:
-    def __init__(
-        self, id: int, name: str, day: int, month: int, year: int, descriacao: str = ""
-    ):
-        self.nome = name.capitalize()
-        self.dataDestino = datetime(year, month, day)
+    def __init__(self, name: str, data_destino: datetime, descricao: str = ""):
+        self.name = name.capitalize()
+        self.dataDestino = data_destino
         self.dataAuto = datetime.now()
-        self.descricao = descriacao
+        self.descricao = descricao

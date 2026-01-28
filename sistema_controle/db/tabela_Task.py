@@ -25,7 +25,7 @@ def create_table():
     cursor.close()
     connection.close()
 
-    print("creat tabela")
+    # print("creat tabela")
 
 
 if __name__ == "__main__":
