@@ -4,6 +4,7 @@ from sistema_controle.src.model.task import Task
 from sistema_controle.db.tabela_Task import create_table
 
 
+# TEST: testa o status e colocar as coisas do metodo de status da tarefa
 def add_task(task: Task):
 
     connectionTask = connection()
@@ -13,14 +14,15 @@ def add_task(task: Task):
 
     cursor.execute(
         """
-        INSERT INTO tarefas (nome, descricao, data_criacao, data_destino)
-        VALUES (%s, %s, %s, %s)
+        INSERT INTO TASK (nome, descricao, data_criacao, data_destino, status)
+        VALUES (%s, %s, %s, %s, %s)
         """,
         (
             task.name,
             task.descricao,
             task.dataAuto,
             task.dataDestino,
+            task.status,
         ),
     )
 
@@ -29,7 +31,8 @@ def add_task(task: Task):
     connectionTask.close()
 
 
-def task_list():  # colcoar o metodo de filtro aqui dentro
+# REFACTOR: colocar as opcoes de filtro nesse metodo e mudar o metodo de listagem para colcoar o status e o novo nome
+def task_list():
 
     connectionTask = connection()
     cursor = connectionTask.cursor()
@@ -63,7 +66,7 @@ def task_delet(id_delet):
         connectionTask = connection()
         cursor = connectionTask.cursor()
 
-        sql = "DELETE FROM tarefas WHERE    id=%s"
+        sql = "DELETE FROM TASK WHERE    id=%s"
         cursor.execute(sql, (id_delet,))
 
         connectionTask.commit()

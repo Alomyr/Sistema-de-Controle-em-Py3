@@ -1,1 +1,1 @@
-SELECT * FROM tarefas;
+DROP TABLE task;

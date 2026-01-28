@@ -3,6 +3,8 @@ from sistema_controle.db.task_repository import add_task, task_list, task_delet
 from sistema_controle.src.model.task import Task
 
 
+# TODO: fazer o rende do menu com as novas opt e 
+# fazer o rende do status
 def render_menu():
     print("1. Adicionar Tarefa")
     print("0. Sair")
