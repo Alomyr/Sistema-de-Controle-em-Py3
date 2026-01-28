@@ -22,3 +22,6 @@ def add_task(task: Task):
     connectionTask.commit()
     cursor.close()
     connectionTask.close()
+
+
+# fazer o delete e o list
