@@ -6,6 +6,7 @@ def create_table():
     para rodar a criacao da tabela por esse aquivo deve usar:
         python3 -m sistema_controle.db.tabela_Task
     """
+    # print("Criando tabela...")
 
     connection = connectiondb.connection()
     cursor = connection.cursor()
@@ -24,8 +25,6 @@ def create_table():
     connection.commit()
     cursor.close()
     connection.close()
-
-    # print("creat tabela")
 
 
 if __name__ == "__main__":
