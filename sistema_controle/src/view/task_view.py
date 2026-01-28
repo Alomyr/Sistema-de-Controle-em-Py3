@@ -1,5 +1,5 @@
 from datetime import datetime
-from sistema_controle.db.task_repository import add_task
+from sistema_controle.db.task_repository import add_task, task_list
 from sistema_controle.src.model.task import Task
 
 
@@ -20,3 +20,14 @@ def cadastro():
         add_task(task)
     except Exception as errors:
         print(f"{errors}")
+
+
+def task_list_view():
+
+    try:
+        task_list()
+    except Exception as erros:
+        print(f"{erros}")
+
+
+# def task_delet():
