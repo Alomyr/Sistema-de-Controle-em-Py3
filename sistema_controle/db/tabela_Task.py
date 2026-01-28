@@ -1,9 +1,14 @@
-import conexao
+from sistema_controle.db import connectiondb
 
 
-def criar_tabela():
-    conection = conexao.conectar()
-    cursor = conection.cursor()
+def create_table():
+    """
+    para rodar a criacao da tabela por esse aquivo deve usar:
+        python3 -m sistema_controle.db.tabela_Task
+    """
+
+    connection = connectiondb.connection()
+    cursor = connection.cursor()
 
     cursor.execute(
         """
@@ -16,12 +21,12 @@ def criar_tabela():
         );
     """
     )
-    conection.commit()
+    connection.commit()
     cursor.close()
-    conection.close()
+    connection.close()
 
     print("creat tabela")
 
 
 if __name__ == "__main__":
-    criar_tabela()
+    create_table()
