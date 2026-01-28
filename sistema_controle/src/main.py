@@ -7,21 +7,13 @@ start = True
 
 
 def main():
-    # task = Task(
-    #     name="estudar python + postgres",
-    #     data_destino=datetime(2026, 2, 20),
-    #     descricao="finalizar CRUD",
-    # )
-    # add_task(task)
-    # print("✅ Tarefa adicionada com sucesso!")
-
-    while start:
+    while start:  ## passar isso para um maquina de estados
         opt = render_menu()
 
         match opt:
             case 1:
                 cadastro()
-            case 2:
+            case 0:
                 break
 
 
