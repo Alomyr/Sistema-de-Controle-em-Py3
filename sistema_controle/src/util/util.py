@@ -3,6 +3,7 @@ def render_status():
     return input("Opt: ").capitalize()
 
 
+# REFACTOR: LIMPAR E ADD CASE DEFAULT
 def state_machine_status():
     while True:
         opt = render_status()

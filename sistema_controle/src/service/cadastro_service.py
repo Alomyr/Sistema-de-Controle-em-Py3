@@ -2,6 +2,7 @@ from datetime import datetime
 from sistema_controle.db.task_repository import add_task
 
 
+# REFACTOR: COLOCAR DOC
 def cadastro_service(task):
     """ "Regra de negocios do add_task"""
     if not task.name or task.name.strip() == "":

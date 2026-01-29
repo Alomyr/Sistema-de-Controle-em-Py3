@@ -8,6 +8,7 @@ import csv
 
 # TEST: testa o status e colocar as coisas do metodo de status da tarefai
 # TODO: regras de negocio do sistema e .env
+# REFACTOR: LIMPAR E COLCOAR DOCS
 def add_task(task: Task):
 
     connectionTask = connection()

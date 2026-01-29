@@ -16,6 +16,7 @@ from sistema_controle.src.service.cadastro_service import cadastro_service
 
 # TODO: fazer o rende do menu com as novas opt e
 # fazer o rende do status
+# REFACTOR: LIMPAR E CORRIGIR METODOS REPETIDOS
 def render_menu():
     print(
         "1. Adicionar Tarefa\n2. Listar tarefas\n3. Deletar tarefa\n4. Editar tarefa\n5. Editar status\n6. Deletar tudo\n7. Filtrar por status"

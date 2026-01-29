@@ -1,6 +1,7 @@
 from datetime import datetime
 
 
+# REFACTOR: COLOCAR DOCS E COMENTARIOS
 class Task:
     def __init__(
         self, name: str, data_destino: datetime, descricao: str = "", status="null"
