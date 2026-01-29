@@ -4,6 +4,7 @@ from sistema_controle.src.view.task_view import (
     edit_status_view,
     edit_task_view,
     render_menu,
+    status_filter_view,
     task_delet_all_view,
     task_list_view,
     task_delet_view,
@@ -36,6 +37,8 @@ def state_machine():
                 edit_status_view()
             case 6:
                 task_delet_all_view()
+            case 7:
+                status_filter_view()
             case 0:
                 print("Encerrando sistema...")
                 status = "stopped"

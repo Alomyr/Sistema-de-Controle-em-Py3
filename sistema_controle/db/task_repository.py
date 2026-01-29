@@ -63,6 +63,39 @@ def task_list():
         connectionTask.close()
 
 
+def task_list_with_filter(status_filter: str):
+
+    status_filter = status_filter
+
+    connectionTask = connection()
+    cursor = connectionTask.cursor()
+
+    cursor.execute("SELECT id, nome, descricao, data_destino, status FROM TASK;")
+    list_task = cursor.fetchall()
+
+    if not list_task:
+        print("Lista vazia")
+
+    else:
+        for row in list_task:
+            id_task = row[0]
+            nome = row[1]
+            desc = row[2]
+            data = row[3]
+            status = row[4]
+
+            if hasattr(data, "strftime"):
+                data_view = data.strftime("%d/%m/%Y")
+            else:
+                data_view = str(data)
+
+            if status == status_filter: # pega apenas os q tem o mesmo status
+                print(f"{id_task:<5} |{nome:<15} | {desc:<20} | {data_view} | {status}")
+
+        cursor.close()
+        connectionTask.close()
+
+
 def task_delet(id_delet):
     try:
         connectionTask = connection()
