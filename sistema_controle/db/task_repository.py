@@ -1,5 +1,6 @@
 from ast import Delete
 from sistema_controle.db.connectiondb import connection
+from sistema_controle.src.model import task
 from sistema_controle.src.model.task import Task
 from sistema_controle.db.tabela_Task import create_table
 
@@ -37,7 +38,7 @@ def task_list():
     connectionTask = connection()
     cursor = connectionTask.cursor()
 
-    cursor.execute("SELECT id, nome, descricao, data_destino FROM TASK;")
+    cursor.execute("SELECT id, nome, descricao, data_destino, status FROM TASK;")
     list_task = cursor.fetchall()
 
     if not list_task:
@@ -49,13 +50,14 @@ def task_list():
             nome = row[1]
             desc = row[2]
             data = row[3]
+            status = row[4]
 
             if hasattr(data, "strftime"):
                 data_view = data.strftime("%d/%m/%Y")
             else:
                 data_view = str(data)
 
-            print(f"{id_task:<5} |{nome:<15} | {desc:<20} | {data_view}")
+            print(f"{id_task:<5} |{nome:<15} | {desc:<20} | {data_view} | {status}")
 
         cursor.close()
         connectionTask.close()
@@ -71,6 +73,81 @@ def task_delet(id_delet):
 
         connectionTask.commit()
         print(f"deletado a tarefa com id: {id_delet}")
+        cursor.close
+    except Exception as errors:
+        print(errors)
+    finally:
+        if connectionTask is not None:
+            connectionTask.close()
+
+
+def edit_task(id_edit: int, task: task):
+
+    try:
+        connectionTask = connection()
+        cursor = connectionTask.cursor()
+
+        sql = """
+                    UPDATE TASK 
+                    SET nome = %s, descricao = %s, data_destino = %s, status = %s
+                    WHERE id = %s
+                """
+        valores = (task.name, task.descricao, task.dataDestino, task.status, id_edit)
+
+        cursor.execute(sql, valores)
+        connectionTask.commit()
+
+        print(f"editando a tarefa")
+        cursor.close
+        if cursor.rowcount == 0:
+            print(f"id nao encontrado para {id_edit}")
+        else:
+            print("Tarefa editada com sucesso: ")
+    except Exception as errors:
+        print(errors)
+    finally:
+        if connectionTask is not None:
+            connectionTask.close()
+
+
+def edit_statos(id_edit: int, status: str):
+
+    try:
+        connectionTask = connection()
+        cursor = connectionTask.cursor()
+
+        sql = """
+                    UPDATE TASK 
+                    SET status = %s
+                    WHERE id = %s
+                """
+        valores = (status, id_edit)
+
+        cursor.execute(sql, valores)
+        connectionTask.commit()
+
+        print(f"editando a tarefa")
+        cursor.close
+        if cursor.rowcount == 0:
+            print(f"id nao encontrado para {id_edit}")
+        else:
+            print("Tarefa editada com sucesso: ")
+    except Exception as errors:
+        print(errors)
+    finally:
+        if connectionTask is not None:
+            connectionTask.close()
+
+
+def task_delet_all():
+    try:
+        connectionTask = connection()
+        cursor = connectionTask.cursor()
+
+        sql = "DROP TABLE task"
+        cursor.execute(sql)
+
+        connectionTask.commit()
         cursor.close
     except Exception as errors:
         print(errors)

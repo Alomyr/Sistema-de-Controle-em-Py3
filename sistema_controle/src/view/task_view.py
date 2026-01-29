@@ -1,12 +1,22 @@
 from datetime import datetime
-from sistema_controle.db.task_repository import add_task, task_list, task_delet
+from sistema_controle.db.task_repository import (
+    add_task,
+    edit_statos,
+    edit_task,
+    task_delet_all,
+    task_list,
+    task_delet,
+)
 from sistema_controle.src.model.task import Task
+from sistema_controle.src.util.util import state_machine_status
 
 
 # TODO: fazer o rende do menu com as novas opt e
 # fazer o rende do status
 def render_menu():
-    print("1. Adicionar Tarefa")
+    print(
+        "1. Adicionar Tarefa\n2. Listar tarefas\n3. Deletar tarefa\n4. Editar tarefa\n5. Editar status"
+    )
     print("0. Sair")
     return int(input("opcao: "))
 
@@ -17,7 +27,7 @@ def cadastro():
         describe = input("Descricao: ")
         data_str = input("Data do compromiso: ")
         data_data = datetime.strptime(data_str, "%Y/%m/%d")
-        status = input("Estado: ")
+        status = state_machine_status()
         task = Task(nome, data_data, describe, status)
         add_task(task)
     except Exception as errors:
@@ -36,3 +46,35 @@ def task_delet_view():
     task_list_view()
     id_delet = int(input("Digite o id da tarefa para deletar: "))
     task_delet(id_delet)
+
+
+def task_delet_all_view():
+    print("Deletando todas as tarefas...")
+    task_delet_all()
+
+
+def edit_task_view():
+    task_list_view()
+    try:
+        id_edit = int(input("id da tarefa q vc quer editar: "))
+        print("Novos dados:")
+        nome = input("Nome da tarefa: ")
+        describe = input("Descricao: ")
+        data_str = input("Data do compromiso: ")
+        data_data = datetime.strptime(data_str, "%Y/%m/%d")
+        status = state_machine_status()
+        task = Task(nome, data_data, describe, status)
+        edit_task(id_edit, task)
+    except Exception as errors:
+        print(f"{errors}")
+
+
+def edit_status_view():
+    task_list_view()
+    try:
+        id_edit = int(input("id da tarefa q vc quer editar: "))
+        print("Novos dados:")
+        status = state_machine_status()
+        edit_statos(id_edit, status)
+    except Exception as errors:
+        print(f"{errors}")
