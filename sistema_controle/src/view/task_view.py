@@ -9,7 +9,9 @@ from sistema_controle.db.task_repository import (
     task_list_with_filter,
 )
 from sistema_controle.src.model.task import Task
+from sistema_controle.src.service import cadastro_service
 from sistema_controle.src.util.util import state_machine_status
+from sistema_controle.src.service.cadastro_service import cadastro_service
 
 
 # TODO: fazer o rende do menu com as novas opt e
@@ -30,7 +32,7 @@ def cadastro():
         data_data = datetime.strptime(data_str, "%Y/%m/%d")
         status = state_machine_status()
         task = Task(nome, data_data, describe, status)
-        add_task(task)
+        cadastro_service(task)
     except Exception as errors:
         print(f"{errors}")
 
