@@ -1,55 +1,72 @@
-# Sistema-de-Controle-em-Py3
+# 📝 Sistema de Controle de Tarefas (CLI)
 
-projeto basico/introdutorio para aplicar os conhecimentos inicias --> avancandos em python 3
+Um gerenciador de tarefas robusto desenvolvido em Python 3, utilizando PostgreSQL para persistência de dados e seguindo padrões de arquitetura em camadas. O projeto conta com documentação automatizada e validações de regras de negócio.
 
-# 📌 Projeto 1 — Sistema de Controle Pessoal (CLI + Banco de Dados)
+## 🚀 Funcionalidades
 
-## 🔹 Objetivo do Projeto
+    CRUD Completo: Adicionar, listar, editar e deletar tarefas.
 
-O projeto tem como objetivo criar um sistema de controle de tarefas simples, usando Python e SQLite, para praticar:
+    Máquina de Estados: Controle rigoroso de status (Não Iniciada, Em Progresso, Concluído).
 
-Estruturas de dados (listas, dicionários)
+    Filtros Avançados: Busca de tarefas por status específico.
 
-Controle de fluxo (if, loops)
+    Exportação: Gera relatórios em formato .csv de todas as tarefas.
 
-Entrada e saída de dados no terminal
+    Persistência: Integração com banco de dados relacional PostgreSQL.
 
-Persistência de dados com banco de dados SQLite
+    Interface Limpa: Renderização de tabelas alinhadas no terminal.
 
-Boas práticas de organização de código e versionamento com Git
+## 🛠️ Tecnologias Utilizadas
 
-Esse projeto mostra que você consegue programar do zero algo funcional, lidar com banco de dados e gerar outputs claros para o usuário.
+    Linguagem: Python 3.10+
 
-## 🔹 Funcionalidades do Sistema
+    Banco de Dados: PostgreSQL
 
-O sistema vai permitir que o usuário:
+    Driver DB: Psycopg2
 
-Adicionar tarefas
+    Documentação: MkDocs com padrão Google Style.
 
-Nome da tarefa
+    Variáveis de Ambiente: Python-dotenv
 
-Descrição opcional
+## 📋 Pré-requisitos
 
-Data de criação automática
+Antes de começar, você vai precisar ter instalado em sua máquina:
 
-Listar tarefas
+    Python 3
 
-Mostrar todas as tarefas cadastradas
+    PostgreSQL
 
-Indicar tarefas concluídas e pendentes
+    Git
 
-Marcar tarefa como concluída
+### Dependências
 
-Usuário escolhe a tarefa pelo ID
+Instale as bibliotecas necessárias:
+        pip install psycopg2 python-dotenv mkdocs-material mkdocstrings[python]
 
-Status é atualizado no banco
+## ⚙️ Configuração
 
-Excluir tarefas
+#### Clonar o repositório
 
-Deletar tarefas pelo ID
+    git clone https://github.com/Alomyr/Sistema-de-Controle-em-Py3.git
 
-Exportar tarefas para CSV
+    cd Sistema-de-Controle-em-Py3
 
-Criar arquivo CSV com todas as tarefas
+#### Criar a Tabela: Execute o script de inicialização do banco ou use adicione uma tarefa e a tabela sera criada automaticamente
 
-Permitir visualização fora do sistema
+## 🏃 Como Rodar
+
+### Para iniciar o sistema, execute o arquivo principal (ajuste conforme seu ponto de entrada)
+
+        python -m sistema_controle.src.main
+
+## 📂 Estrutura do Projeto
+
+        ├── sistema_controle/
+        │   ├── db/          # Conexão, Scripts SQL e Repositórios
+        │   ├── src/
+        │   │   ├── model/   # Classes de Entidade (Task)
+        │   │   ├── service/ # Regras de Negócio e Validações
+        │   │   ├── view/    # Interface de Usuário (CLI)
+        │   │   └── util/    # Utilitários e Máquina de Estado
+        │   ├── docs/            # Arquivos Markdown para documentação
+        │   └── main.py          # Ponto de entrada do sistema
