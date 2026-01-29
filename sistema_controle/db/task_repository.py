@@ -12,9 +12,6 @@ from sistema_controle.db.tabela_Task import create_table
 import csv
 
 
-# TEST: testa o status e colocar as coisas do metodo de status da tarefai
-# TODO: regras de negocio do sistema e .env
-# REFACTOR: LIMPAR E COLCOAR DOCS
 def add_task(task: Task):
     """
     Insere uma nova tarefa no banco de dados.
