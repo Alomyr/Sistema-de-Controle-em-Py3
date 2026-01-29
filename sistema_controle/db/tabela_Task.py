@@ -1,14 +1,30 @@
+"""
+Módulo de Definição de Esquema (Schema) do Banco de Dados.
+
+Este script é responsável por garantir que a estrutura física do banco de dados
+(tabelas e constraints) esteja presente antes da execução das operações de CRUD.
+"""
+
 from sistema_controle.db import connectiondb
 
 
 def create_table():
     """
-    para rodar a criacao da tabela por esse aquivo deve usar:
+    Cria a tabela 'TASK' no banco de dados caso ela não exista.
+
+    A tabela armazena as seguintes informações:
+        - id: Identificador único autoincrementado.
+        - nome: Título da tarefa.
+        - descricao: Detalhes adicionais.
+        - data_criacao: Data de registro automático.
+        - data_destino: Prazo final definido pelo usuário.
+        - status: Estado atual (Concluido, In Progress, Não Iniciada).
+
+    Note:
+        Para executar este script isoladamente, use o comando:
         python3 -m sistema_controle.db.tabela_Task
     """
 
-    # TODO: tem q colocar o status da tarefa aqui e quais os tipos de estaos vao ser
-    # adicionando aqui nele ou seja uma "maquina de estado" para definir o estado atual da tarefa
     connection = connectiondb.connection()
     cursor = connection.cursor()
 

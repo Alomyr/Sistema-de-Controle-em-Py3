@@ -1,4 +1,10 @@
-from ast import Delete, While
+"""
+Módulo de Repositório de Tarefas (Data Access Layer).
+
+Este módulo gerencia todas as operações de banco de dados (CRUD) para a
+entidade Task, utilizando o PostgreSQL/MySQL via conexões de cursor.
+"""
+
 from sistema_controle.db.connectiondb import connection
 from sistema_controle.src.model import task
 from sistema_controle.src.model.task import Task
@@ -10,6 +16,12 @@ import csv
 # TODO: regras de negocio do sistema e .env
 # REFACTOR: LIMPAR E COLCOAR DOCS
 def add_task(task: Task):
+    """
+    Insere uma nova tarefa no banco de dados.
+
+    Args:
+        task (Task): Objeto Task contendo os dados a serem persistidos.
+    """
 
     connectionTask = connection()
     cursor = connectionTask.cursor()
@@ -35,8 +47,13 @@ def add_task(task: Task):
     connectionTask.close()
 
 
-# REFACTOR: colocar as opcoes de filtro nesse metodo e mudar o metodo de listagem para colcoar o status e o novo nome
 def task_list():
+    """
+    Busca e exibe todas as tarefas cadastradas.
+
+    Note:
+        A formatação de exibição utiliza f-strings para alinhamento em colunas.
+    """
 
     connectionTask = connection()
     cursor = connectionTask.cursor()
@@ -67,6 +84,12 @@ def task_list():
 
 
 def task_list_with_filter(status_filter: str):
+    """
+    Filtra tarefas com base no status fornecido.
+
+    Args:
+        status_filter (str): O status exato para filtrar (ex: 'Concluido').
+    """
 
     status_filter = status_filter
 
@@ -100,6 +123,13 @@ def task_list_with_filter(status_filter: str):
 
 
 def task_delet(id_delet):
+    """
+    Remove uma tarefa específica pelo ID.
+
+    Args:
+        id_delet (int): O identificador único da tarefa.
+    """
+
     try:
         connectionTask = connection()
         cursor = connectionTask.cursor()
@@ -118,7 +148,13 @@ def task_delet(id_delet):
 
 
 def edit_task(id_edit: int, task: task):
+    """
+    Atualiza todos os campos de uma tarefa existente.
 
+    Args:
+        id_edit (int): ID da tarefa a ser modificada.
+        task (Task): Novos dados da tarefa.
+    """
     try:
         connectionTask = connection()
         cursor = connectionTask.cursor()
@@ -146,7 +182,8 @@ def edit_task(id_edit: int, task: task):
             connectionTask.close()
 
 
-def edit_statos(id_edit: int, status: str):
+def edit_status(id_edit: int, status: str):
+    """Atualiza apenas o status de uma tarefa."""
 
     try:
         connectionTask = connection()
@@ -176,6 +213,7 @@ def edit_statos(id_edit: int, status: str):
 
 
 def task_delet_all():
+    """Remove a tabela inteira do banco de dados (CUIDADO)."""
     try:
         connectionTask = connection()
         cursor = connectionTask.cursor()
@@ -193,6 +231,8 @@ def task_delet_all():
 
 
 def export_tasks():
+    """Exporta todos os registros da tabela TASK para um arquivo CSV ('dados.csv')."""
+    conn = connection()
     print("Exportado para um arquivo csv...")
 
     connectionTask = connection()
