@@ -13,5 +13,3 @@ def state_machine_status():
                 return "in progress"
             case "N":
                 return "nao iniciada"
-            
-

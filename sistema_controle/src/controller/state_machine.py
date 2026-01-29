@@ -1,4 +1,4 @@
-from sistema_controle.db.task_repository import edit_task
+from sistema_controle.db.task_repository import edit_task, export_tasks
 from sistema_controle.src.view.task_view import (
     cadastro,
     edit_status_view,
@@ -39,6 +39,8 @@ def state_machine():
                 task_delet_all_view()
             case 7:
                 status_filter_view()
+            case 8:
+                export_tasks()
             case 0:
                 print("Encerrando sistema...")
                 status = "stopped"
