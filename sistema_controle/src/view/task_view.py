@@ -3,7 +3,7 @@ from sistema_controle.db.task_repository import add_task, task_list, task_delet
 from sistema_controle.src.model.task import Task
 
 
-# TODO: fazer o rende do menu com as novas opt e 
+# TODO: fazer o rende do menu com as novas opt e
 # fazer o rende do status
 def render_menu():
     print("1. Adicionar Tarefa")
@@ -17,8 +17,8 @@ def cadastro():
         describe = input("Descricao: ")
         data_str = input("Data do compromiso: ")
         data_data = datetime.strptime(data_str, "%Y/%m/%d")
-
-        task = Task(nome, data_data, describe)
+        status = input("Estado: ")
+        task = Task(nome, data_data, describe, status)
         add_task(task)
     except Exception as errors:
         print(f"{errors}")

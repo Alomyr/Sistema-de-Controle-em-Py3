@@ -37,7 +37,7 @@ def task_list():
     connectionTask = connection()
     cursor = connectionTask.cursor()
 
-    cursor.execute("SELECT id, nome, descricao, data_destino FROM tarefas;")
+    cursor.execute("SELECT id, nome, descricao, data_destino FROM TASK;")
     list_task = cursor.fetchall()
 
     if not list_task:

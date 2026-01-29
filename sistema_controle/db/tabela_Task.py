@@ -6,7 +6,6 @@ def create_table():
     para rodar a criacao da tabela por esse aquivo deve usar:
         python3 -m sistema_controle.db.tabela_Task
     """
-    # print("Criando tabela...")
 
     # TODO: tem q colocar o status da tarefa aqui e quais os tipos de estaos vao ser
     # adicionando aqui nele ou seja uma "maquina de estado" para definir o estado atual da tarefa
