@@ -1,1 +1,1 @@
-DROP TABLE task;
+SELECT * FROM task;
